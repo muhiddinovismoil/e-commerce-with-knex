@@ -28,30 +28,3 @@ export const verifyToken = async (prop, token) => {
         }
     }
 }
-export const refreshAccess = async (prop, token) => {
-    try {
-        const decoded = jwt.decode(token, { complete: true })
-        if (!decoded) {
-            throw new Error('Invalid token')
-        }
-        const { exp, ...payload } = decoded.payload
-        const currentTime = Math.floor(Date.now() / 1000)
-        if (exp - currentTime < 10) {
-            const newToken = await generateToken(prop, payload)
-            return {
-                success: true,
-                newAccessToken: newToken,
-            }
-        }
-
-        return {
-            success: false,
-            message: 'Token is still valid',
-        }
-    } catch (error) {
-        return {
-            success: false,
-            message: error.message,
-        }
-    }
-}

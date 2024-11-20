@@ -1,3 +1,7 @@
+export * from './address.service.js'
+export * from './auth.service.js'
+export * from './social-profiles.service.js'
+export * from './user.service.js'
 export * from "./carts.service.js"
 export * from "./wishlist.service.js"
 export * from "./reviews.service.js"
