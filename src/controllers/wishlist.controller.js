@@ -1,16 +1,16 @@
 import {
-    createOrderService,
-    deleteOrderService,
-    getAllOrderService,
-    getByIdOrderService,
-} from '../services/orders.service.js'
+    createWishlistService,
+    deleteWishlistService,
+    getAllWishlistService,
+    getByIdWishlistService,
+} from '../services/index.js'
 
-export const createOrdersController = async (req, res, next) => {
+export const createWishlistController = async (req, res, next) => {
     try {
         if (!req.body) {
             return res.status(404).send('NOT FOUND!!!')
         }
-        const data = await createOrderService(req.body)
+        const data = await createWishlistService(req.body)
         if (!data) {
             return res.send('Service is not provide...')
         }
@@ -23,9 +23,9 @@ export const createOrdersController = async (req, res, next) => {
     }
 }
 
-export const getAllOrdersController = async (req, res, next) => {
+export const getAllWishlistController = async (req, res, next) => {
     try {
-        const data = await getAllOrderService()
+        const data = await getAllWishlistService()
         if (!data) {
             return res.status(404).send('NOT FOUND!!!')
         }
@@ -35,13 +35,13 @@ export const getAllOrdersController = async (req, res, next) => {
     }
 }
 
-export const getByIdOrdersController = async (req, res, next) => {
+export const getByIdWishlistController = async (req, res, next) => {
     try {
         const { id } = req.params
         if (!id) {
             return res.status(404).send('id not valid!!!')
         }
-        const data = await getByIdOrderService(id)
+        const data = await getByIdWishlistService(id)
         if (!data) {
             return res.status(404).send('NOT FOUND!!!')
         }
@@ -51,13 +51,13 @@ export const getByIdOrdersController = async (req, res, next) => {
     }
 }
 
-export const deleteOrdersController = async (req, res, next) => {
+export const deleteWishlistController = async (req, res, next) => {
     try {
         const { id } = req.params
         if (!id) {
             return res.status(404).send('id not valid!!!')
         }
-        const data = await deleteOrderService(id)
+        const data = await deleteWishlistService(id)
         if (!data) {
             return res.status(404).send('NOT FOUND!!!')
         }

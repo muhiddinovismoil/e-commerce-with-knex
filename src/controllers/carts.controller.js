@@ -1,16 +1,17 @@
 import {
-    createOrderService,
-    deleteOrderService,
-    getAllOrderService,
-    getByIdOrderService,
-} from '../services/orders.service.js'
+    deleteCartService,
+    updateCartService,
+    getByIdCartService,
+    getAllCartService,
+    createCartService,
+} from '../services/index.js'
 
-export const createOrdersController = async (req, res, next) => {
+export const createCartController = async (req, res, next) => {
     try {
         if (!req.body) {
             return res.status(404).send('NOT FOUND!!!')
         }
-        const data = await createOrderService(req.body)
+        const data = await createCartService(req.body)
         if (!data) {
             return res.send('Service is not provide...')
         }
@@ -23,9 +24,9 @@ export const createOrdersController = async (req, res, next) => {
     }
 }
 
-export const getAllOrdersController = async (req, res, next) => {
+export const getAllCartController = async (req, res, next) => {
     try {
-        const data = await getAllOrderService()
+        const data = await getAllCartService()
         if (!data) {
             return res.status(404).send('NOT FOUND!!!')
         }
@@ -35,13 +36,13 @@ export const getAllOrdersController = async (req, res, next) => {
     }
 }
 
-export const getByIdOrdersController = async (req, res, next) => {
+export const getByIdCartController = async (req, res, next) => {
     try {
         const { id } = req.params
         if (!id) {
             return res.status(404).send('id not valid!!!')
         }
-        const data = await getByIdOrderService(id)
+        const data = await getByIdCartService(id)
         if (!data) {
             return res.status(404).send('NOT FOUND!!!')
         }
@@ -51,13 +52,29 @@ export const getByIdOrdersController = async (req, res, next) => {
     }
 }
 
-export const deleteOrdersController = async (req, res, next) => {
+export const updateCartController = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        if (!id || !req.body) {
+            return res.status(404).send('id or body not valid!!!')
+        }
+        const data = await updateCartService(id, req.body)
+        if (!data) {
+            return res.status(404).send('NOT FOUND!!!')
+        }
+        return res.status(200).send(data)
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const deleteCartController = async (req, res, next) => {
     try {
         const { id } = req.params
         if (!id) {
             return res.status(404).send('id not valid!!!')
         }
-        const data = await deleteOrderService(id)
+        const data = await deleteCartService(id)
         if (!data) {
             return res.status(404).send('NOT FOUND!!!')
         }

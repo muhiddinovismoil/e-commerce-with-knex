@@ -1,16 +1,17 @@
 import {
-    createOrderService,
-    deleteOrderService,
-    getAllOrderService,
-    getByIdOrderService,
-} from '../services/orders.service.js'
+    createReviewsService,
+    deleteReviewsService,
+    getAllReviewsService,
+    getByIdReviewsService,
+    updateReviewsService,
+} from '../services/index.js'
 
-export const createOrdersController = async (req, res, next) => {
+export const createReviewsController = async (req, res, next) => {
     try {
         if (!req.body) {
             return res.status(404).send('NOT FOUND!!!')
         }
-        const data = await createOrderService(req.body)
+        const data = await createReviewsService(req.body)
         if (!data) {
             return res.send('Service is not provide...')
         }
@@ -23,9 +24,9 @@ export const createOrdersController = async (req, res, next) => {
     }
 }
 
-export const getAllOrdersController = async (req, res, next) => {
+export const getAllReviewsController = async (req, res, next) => {
     try {
-        const data = await getAllOrderService()
+        const data = await getAllReviewsService()
         if (!data) {
             return res.status(404).send('NOT FOUND!!!')
         }
@@ -35,13 +36,28 @@ export const getAllOrdersController = async (req, res, next) => {
     }
 }
 
-export const getByIdOrdersController = async (req, res, next) => {
+export const getByIdReviewsController = async (req, res, next) => {
     try {
         const { id } = req.params
         if (!id) {
             return res.status(404).send('id not valid!!!')
         }
-        const data = await getByIdOrderService(id)
+        const data = await getByIdReviewsService(id)
+        if (!data) {
+            return res.status(404).send('NOT FOUND!!!')
+        }
+        return res.status(200).send(data)
+    } catch (error) {
+        next(error)
+    }
+}
+export const updateReviewsController = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        if (!id || !req.body) {
+            return res.status(404).send('id or body not valid!!!')
+        }
+        const data = await updateReviewsService(id, req.body)
         if (!data) {
             return res.status(404).send('NOT FOUND!!!')
         }
@@ -51,13 +67,13 @@ export const getByIdOrdersController = async (req, res, next) => {
     }
 }
 
-export const deleteOrdersController = async (req, res, next) => {
+export const deleteReviewsController = async (req, res, next) => {
     try {
         const { id } = req.params
         if (!id) {
             return res.status(404).send('id not valid!!!')
         }
-        const data = await deleteOrderService(id)
+        const data = await deleteReviewsService(id)
         if (!data) {
             return res.status(404).send('NOT FOUND!!!')
         }
