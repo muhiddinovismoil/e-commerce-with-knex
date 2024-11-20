@@ -59,6 +59,11 @@ export const createAllTables = async () => {
                 logger.info('Cart item table created')
             }
         }
+        if (!(await database.schema.hasTable('Addresses'))) {
+            await database.schema.createTable('Addresses', (table) => {
+                table.increments
+            })
+        }
     } catch (error) {
         logger.error(error.message)
     }
