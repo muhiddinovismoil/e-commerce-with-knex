@@ -59,6 +59,7 @@ export const createAllTables = async () => {
                 logger.info('Cart item table created')
             }
         }
+        //carts
         if (!(await database.schema.hasTable('Addresses'))) {
             await database.schema.createTable('Addresses', (table) => {
                 table.increments
@@ -74,6 +75,7 @@ export const createAllTables = async () => {
             })
             logger.info('Carts jadvali yaratildi...')
         }
+        //wishlist
         if (!(await database.schema.hasTable('wishlist'))) {
             await database.schema.createTable('wishlist', (table) => {
                 table.increments('id').primary()
@@ -83,6 +85,7 @@ export const createAllTables = async () => {
             })
             logger.info('WishList jadvali yaratildi...')
         }
+        //reviews
         if (!(await database.schema.hasTable('reviews'))) {
             await database.schema.createTable('reviews', (table) => {
                 table.increments('id').primary()
@@ -95,6 +98,15 @@ export const createAllTables = async () => {
                 table.timestamps(true, true)
             })
             logger.info('Reviews jadvali yaratildi...')
+        }
+        if (!(await database.schema.hasTable('orders'))) {
+            await database.schema.createTable('orders', (table) => {
+                table.increments('id').primary()
+                table.integer('product_id').unsigned().notNullable()
+                table.foreign('product_id').references('id').inTable('product')
+                table.timestamps(true, true)
+            })
+            logger.info('orders jadvali yaratildi...')
         }
     } catch (error) {
         logger.error(error.message)

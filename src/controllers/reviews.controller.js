@@ -4,7 +4,7 @@ import {
     getAllReviewsService,
     getByIdReviewsService,
     updateReviewsService,
-} from '../services/reviews.service'
+} from '../services/index.js'
 
 export const createReviewsController = async (req, res, next) => {
     try {
