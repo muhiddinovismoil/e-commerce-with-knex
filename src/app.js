@@ -14,7 +14,7 @@ app.use(morgan('dev'))
 
 app.use('/product', productRouter)
 app.use('/category', categoryRouter)
-app.use('/card', cardItemRouter)
+app.use('/cartitem', cardItemRouter)
 
 app.use('/api/v1/auth')
 app.use('/api/v1/users')

@@ -1,16 +1,27 @@
 import { Router } from 'express'
 import {
-    createCart,
-    deleteCart,
-    getAllCarts,
-    getCartById,
-    updateCart,
+    createCartItem,
+    deleteCartItem,
+    getAllCartItems,
+    getCartItemById,
+    updateCartItem,
 } from '../controllers/index.js'
+import { authGuard, roleGuard } from '../middlewares/index.js'
 
 export const cardItemRouter = Router()
 
-cardItemRouter.post('/card', createCart)
-cardItemRouter.get('/cards', getAllCarts)
-cardItemRouter.get('/card/:id', getCartById)
-cardItemRouter.put('/card/:id', updateCart)
-cardItemRouter.delete('/card/:id', deleteCart)
+cardItemRouter.post('/caritem', authGuard, createCartItem)
+cardItemRouter.get('/carditems', authGuard, roleGuard('admin'), getAllCartItems)
+cardItemRouter.get('/carditem/:id', authGuard, getCartItemById)
+cardItemRouter.put(
+    '/carditem/:id',
+    authGuard,
+    roleGuard('admin'),
+    updateCartItem,
+)
+cardItemRouter.delete(
+    '/carditem/:id',
+    authGuard,
+    roleGuard('admin'),
+    deleteCartItem,
+)

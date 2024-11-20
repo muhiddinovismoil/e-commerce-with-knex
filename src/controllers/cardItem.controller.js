@@ -6,9 +6,9 @@ import {
     updateCartItemService,
 } from '../services/index.js'
 
-export const createCart = async (req, res, next) => {
+export const createCartItem = async (req, res, next) => {
     try {
-        const result = await createCartItemService({ cartItemData: req.body })
+        const result = await createItemItemService({ ItemItemData: req.body })
         const { success, error, cartItem } = result
         if (success) {
             return res.status(201).send({ message: 'Created', cartItem })
@@ -22,7 +22,7 @@ export const createCart = async (req, res, next) => {
     }
 }
 
-export const getAllCarts = async (req, res, next) => {
+export const getAllCartItems = async (req, res, next) => {
     try {
         const result = await getAllCartItemsService()
         const { success, error, cartItems } = result
@@ -40,7 +40,7 @@ export const getAllCarts = async (req, res, next) => {
     }
 }
 
-export const getCartById = async (req, res, next) => {
+export const getCartItemById = async (req, res, next) => {
     try {
         const { id } = req.params
         const result = await getCartItemByIdService({ id })
@@ -59,7 +59,7 @@ export const getCartById = async (req, res, next) => {
     }
 }
 
-export const updateCart = async (req, res, next) => {
+export const updateCartItem = async (req, res, next) => {
     try {
         const { id } = req.params
         const result = await updateCartItemService({ id, updateData: req.body })
@@ -78,7 +78,7 @@ export const updateCart = async (req, res, next) => {
     }
 }
 
-export const deleteCart = async (req, res, next) => {
+export const deleteCartItem = async (req, res, next) => {
     try {
         const { id } = req.params
         const result = await deleteCartItemService({ id })
