@@ -4,3 +4,4 @@ export * from "./reviews.service.js"
 export * from './cardItem.service.js'
 export * from './product.service.js'
 export * from './category.service.js'
+export * from './orders.service.js'

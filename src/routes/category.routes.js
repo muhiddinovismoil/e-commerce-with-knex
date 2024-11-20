@@ -7,10 +7,12 @@ import {
     updateCategory,
 } from '../controllers/index.js'
 import { authGuard, roleGuard } from '../middlewares/index.js'
+import { validateSchema } from '../middlewares/data.middleware.js'
+import { categorySchema } from '../validations/category.shema.js'
 
 export const categoryRouter = Router()
 
-categoryRouter.post('/category', authGuard, createCategory)
+categoryRouter.post('/category', authGuard, validateSchema(categorySchema),createCategory)
 categoryRouter.get(
     '/categories',
     authGuard,
