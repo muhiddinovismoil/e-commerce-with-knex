@@ -1,3 +1,6 @@
+export * from './cartItem.routes.js'
+export * from './category.routes.js'
+export * from './product.routes.js'
 export * from './address.routes.js'
 export * from './auth.routes.js'
 export * from './orders.routes.js'

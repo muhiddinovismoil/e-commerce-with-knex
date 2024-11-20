@@ -2,10 +2,20 @@ import express from 'express'
 import morgan from 'morgan'
 import {} from './routes/index.js'
 import { createAllTables } from './database/index.js'
+import {
+    cardItemRouter,
+    categoryRouter,
+    productRouter,
+} from './routes/index.js'
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'))
+
+app.use('/product', productRouter)
+app.use('/category', categoryRouter)
+app.use('/cartitem', cardItemRouter)
+
 app.use('/api/v1/auth')
 app.use('/api/v1/users')
 app.use('/api/v1/address')
