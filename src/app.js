@@ -1,16 +1,16 @@
 import express from 'express'
 import morgan from 'morgan'
-import {} from './routes/index.js'
+import { authRouter } from './routes/index.js'
 import { createAllTables } from './database/index.js'
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'))
-app.use('/api/v1/auth')
-app.use('/api/v1/users')
-app.use('/api/v1/address')
-app.use('/api/v1/social-profiles')
-app.use('/api/v1/orders')
+app.use('/api/v1/auth', authRouter)
+// app.use('/api/v1/users')
+// app.use('/api/v1/address')
+// app.use('/api/v1/social-profiles')
+// app.use('/api/v1/orders')
 app.get('/setup', async (req, res) => {
     try {
         await createAllTables()

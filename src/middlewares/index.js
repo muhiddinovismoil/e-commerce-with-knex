@@ -1,6 +1,3 @@
 export * from './guard/auth.guard.js'
 export * from './guard/role.guard.js'
-export * from './addresses.middleware.js'
-export * from './orders.middleware.js'
-export * from './social-profiles.middleware.js'
-export * from './users.middleware.js'
+export * from './data.middleware.js'
