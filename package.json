@@ -1,0 +1,48 @@
+{
+    "name": "hw51",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix .",
+        "format": "prettier --write .",
+        "start": "node server.js",
+        "start:dev": "node --watch server.js",
+        "dev": "nodemon server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "@eslint/js": "^9.14.0",
+        "eslint": "^9.14.0",
+        "eslint-config-node": "^4.1.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "globals": "^15.12.0",
+        "nodemon": "^3.1.7",
+        "prettier": "3.3.3"
+    },
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "dotenv": "^16.4.5",
+        "express": "^4.21.1",
+        "joi": "^17.13.3",
+        "jsonwebtoken": "^9.0.2",
+        "knex": "^3.1.0",
+        "morgan": "^1.10.0",
+        "nodemailer": "^6.9.16",
+        "otp-generator": "^4.0.1",
+        "pg": "^8.13.1",
+        "winston": "^3.17.0"
+    },
+    "prettier": {
+        "trailingComma": "all",
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": true
+    }
+}
