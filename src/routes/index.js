@@ -1,3 +1,6 @@
+export * from "./carts.routes.js"
+export * from "./wishlist.routes.js"
+export * from "./reviews.routes.js"
 export * from './cartItem.routes.js'
 export * from './category.routes.js'
 export * from './product.routes.js'

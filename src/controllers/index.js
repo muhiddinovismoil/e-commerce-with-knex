@@ -1,3 +1,6 @@
+export * from "./carts.controller.js"
+export * from "./wishlist.controller.js"
+export * from "./reviews.controller.js"
 export * from './auth.controller.js'
 export * from './user.controller.js'
 export * from './cardItem.controller.js'
