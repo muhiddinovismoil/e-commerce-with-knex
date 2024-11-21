@@ -6,9 +6,9 @@ import {
     deleteUserByIdController,
 } from '../controllers/index.js'
 import { userScheme } from '../validations/index.js'
-import { authGuard, roleGuard, validateSchema } from '../middlewares/index.js'
+import { authGuard, pagination, roleGuard, validateSchema } from '../middlewares/index.js'
 export const userRouter = Router()
-userRouter.get('/', authGuard, getAllUsersController)
+userRouter.get('/', authGuard, pagination, getAllUsersController)
 userRouter.get('/:id', authGuard, getUserByIdController)
 userRouter.put(
     '/:id',

@@ -19,9 +19,10 @@ export const createOrderService = async (body) => {
     }
 }
 
-export const getAllOrderService = async () => {
+export const getAllOrderService = async (pagination) => {
     try {
-        const all = await connectDB('orders').select('*')
+        const {skip, limit} = pagination
+        const all = await connectDB('orders').select('*').offset(skip).limit(limit)
         if (!all) {
             throw new Error('orders not found...')
         }

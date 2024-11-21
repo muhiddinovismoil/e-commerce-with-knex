@@ -27,7 +27,7 @@ export const createCategory = async (req, res, next) => {
 
 export const getAllCategories = async (req, res, next) => {
     try {
-        const result = await getAllCategoriesService()
+        const result = await getAllCategoriesService(req.pagination)
         const { success, error, categories } = result
         if (success) {
             return res.status(200).send({

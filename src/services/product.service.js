@@ -14,9 +14,10 @@ export const createProductService = async ({ productData }) => {
     }
 }
 
-export const getAllProductsService = async () => {
+export const getAllProductsService = async (pagination) => {
     try {
-        const products = await connectDB.select('*').from('products')
+        const {skip, limit} = pagination
+        const products = await connectDB.select('*').from('products').offset(skip).limit(limit)
         return { success: true, products }
     } catch (error) {
         return { success: false, error }

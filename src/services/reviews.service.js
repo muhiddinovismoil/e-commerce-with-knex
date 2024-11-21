@@ -21,9 +21,10 @@ export const createReviewsService = async (body) => {
     }
 }
 
-export const getAllReviewsService = async () => {
+export const getAllReviewsService = async (pagination) => {
     try {
-        const all = await connectDB('reviews').select('*')
+        const {skip, limit} = pagination
+        const all = await connectDB('reviews').select('*').offset(skip).limit(limit)
         if (!all) {
             throw new Error('reviews not found...')
         }

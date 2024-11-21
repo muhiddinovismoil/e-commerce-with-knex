@@ -19,9 +19,10 @@ export const createWishlistService = async (body) => {
     }
 }
 
-export const getAllWishlistService = async () => {
+export const getAllWishlistService = async (pagination) => {
     try {
-        const all = await connectDB('wishlist').select('*')
+        const {skip, limit} = pagination
+        const all = await connectDB('wishlist').select('*').offset(skip).limit(limit)
         if (!all) {
             throw new Error('wishlist not found...')
         }

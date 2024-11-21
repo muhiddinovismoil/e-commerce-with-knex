@@ -1,8 +1,9 @@
 import connectDB from '../database/db.js'
 import { logger } from '../utils/index.js'
-export const getAllUsersService = async () => {
+export const getAllUsersService = async (pagination) => {
     try {
-        const data = await connectDB.select('*').from('users')
+        const {skip, limit} = pagination
+        const data = await connectDB.select('*').from('users').offset(skip).limit(limit)
         if (data.length == 0) {
             throw new Error('Users not found')
         }

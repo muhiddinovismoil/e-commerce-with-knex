@@ -8,7 +8,7 @@ import {
 export const getAllUsersController = async (req, res, next) => {
     try {
         logger.info(`Route: /api/v1/users METHOD GET`)
-        const data = await getAllUsersService()
+        const data = await getAllUsersService(req.pagination)
         return res.status(200).send({
             msg: 'All users',
             data: data,

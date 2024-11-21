@@ -7,9 +7,9 @@ import {
     deleteAddressByIdController,
 } from '../controllers/index.js'
 import { addressSchema } from '../validations/index.js'
-import { authGuard, roleGuard, validateSchema } from '../middlewares/index.js'
+import { authGuard, roleGuard, validateSchema , pagination} from '../middlewares/index.js'
 export const addressRouter = Router()
-addressRouter.get('/', authGuard, getAllAddressesController)
+addressRouter.get('/', authGuard, pagination, getAllAddressesController)
 addressRouter.get('/:id', authGuard, getAddressByIdController)
 addressRouter.post(
     '/',

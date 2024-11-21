@@ -25,7 +25,7 @@ export const createOrdersController = async (req, res, next) => {
 
 export const getAllOrdersController = async (req, res, next) => {
     try {
-        const data = await getAllOrderService()
+        const data = await getAllOrderService(req.pagination)
         if (!data) {
             return res.status(404).send('NOT FOUND!!!')
         }

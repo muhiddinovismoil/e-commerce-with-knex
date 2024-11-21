@@ -26,7 +26,7 @@ export const createCartController = async (req, res, next) => {
 
 export const getAllCartController = async (req, res, next) => {
     try {
-        const data = await getAllCartService()
+        const data = await getAllCartService(req.pagination)
         if (!data) {
             return res.status(404).send('NOT FOUND!!!')
         }

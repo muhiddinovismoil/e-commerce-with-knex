@@ -19,9 +19,10 @@ export const createCartService = async (body) => {
     }
 }
 
-export const getAllCartService = async () => {
+export const getAllCartService = async (pagination) => {
     try {
-        const all = await connectDB('carts').select('*')
+        const {skip, limit} = pagination
+        const all = await connectDB('carts').select('*').offset(skip).limit(limit)
         if (!all) {
             throw new Error('Carts not found...')
         }

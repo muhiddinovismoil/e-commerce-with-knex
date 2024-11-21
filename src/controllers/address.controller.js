@@ -9,7 +9,7 @@ import {
 export const getAllAddressesController = async (req, res, next) => {
     try {
         logger.info(`Route: /api/v1/address METHOD GET`)
-        const data = await getAllAddressesService()
+        const data = await getAllAddressesService(req.pagination)
         return res.status(200).send({
             msg: 'All Addresses',
             data: data,

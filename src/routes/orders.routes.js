@@ -1,7 +1,6 @@
 import { Router } from 'express'
 
-import { authGuard } from '../middlewares/guard/auth.guard.js'
-import { validateSchema } from '../middlewares/data.middleware.js'
+import { authGuard, pagination, validateSchema } from '../middlewares/index.js'
 import {
     createOrdersController,
     deleteOrdersController,
@@ -12,7 +11,7 @@ import { ordersSchema } from '../validations/order.schema.js'
 
 export const ordersRouter = Router()
 
-ordersRouter.get('/all', authGuard, getAllOrdersController)
+ordersRouter.get('/all', authGuard, pagination, getAllOrdersController)
 ordersRouter.get('/all/:id', authGuard, getByIdOrdersController)
 ordersRouter.post(
     '/create',

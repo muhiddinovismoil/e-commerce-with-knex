@@ -24,7 +24,7 @@ export const createCartItem = async (req, res, next) => {
 
 export const getAllCartItems = async (req, res, next) => {
     try {
-        const result = await getAllCartItemsService()
+        const result = await getAllCartItemsService(req.pagination)
         const { success, error, cartItems } = result
         if (success) {
             return res

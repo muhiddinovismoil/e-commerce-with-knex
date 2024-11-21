@@ -9,7 +9,7 @@ import {
 export const getAllSocialProfilesController = async (req, res, next) => {
     try {
         logger.info(`Route: /api/v1/social-profiles METHOD GET`)
-        const data = await getAllSocialProfilesService()
+        const data = await getAllSocialProfilesService(req.pagination)
         return res.status(200).send({
             msg: 'ALL SOCIAL PROFILES',
             data: data,

@@ -27,7 +27,7 @@ export const createProduct = async (req, res, next) => {
 
 export const getAllProducts = async (req, res, next) => {
     try {
-        const result = await getAllProductsService()
+        const result = await getAllProductsService(req.pagination)
         const { success, error, products } = result
         if (success) {
             return res

@@ -6,8 +6,7 @@ import {
     getCategoryById,
     updateCategory,
 } from '../controllers/index.js'
-import { authGuard, roleGuard } from '../middlewares/index.js'
-import { validateSchema } from '../middlewares/data.middleware.js'
+import { authGuard, pagination, roleGuard, validateSchema } from '../middlewares/index.js'
 import { categorySchema } from '../validations/category.shema.js'
 
 export const categoryRouter = Router()
@@ -17,6 +16,7 @@ categoryRouter.get(
     '/categories',
     authGuard,
     roleGuard('admin'),
+    pagination,
     getAllCategories,
 )
 categoryRouter.get('/category/:id', authGuard, getCategoryById)

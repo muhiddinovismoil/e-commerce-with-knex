@@ -7,9 +7,9 @@ import {
     deleteSocialProfileByIdController,
 } from '../controllers/index.js'
 import { socialProfilesScheme } from '../validations/index.js'
-import { authGuard, roleGuard, validateSchema } from '../middlewares/index.js'
+import { authGuard, pagination, roleGuard, validateSchema } from '../middlewares/index.js'
 export const socialProfilesRouter = Router()
-socialProfilesRouter.get('/', authGuard, getAllSocialProfilesController)
+socialProfilesRouter.get('/', authGuard, pagination, getAllSocialProfilesController)
 socialProfilesRouter.get('/:id', authGuard, getSocialProfileByIdController)
 socialProfilesRouter.post(
     '/',

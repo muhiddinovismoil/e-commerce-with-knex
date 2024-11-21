@@ -1,8 +1,9 @@
 import connectDB from '../database/db.js'
 import { logger } from '../utils/index.js'
-export const getAllSocialProfilesService = async () => {
+export const getAllSocialProfilesService = async (pagination) => {
     try {
-        const data = await connectDB.select('*').from('social_profiles')
+        const {skip, limit} = pagination
+        const data = await connectDB.select('*').from('social_profiles').offset(skip).limit(limit)
         if (data.length == 0) {
             throw new Error('Social Profiles not found')
         }

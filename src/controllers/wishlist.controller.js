@@ -25,7 +25,7 @@ export const createWishlistController = async (req, res, next) => {
 
 export const getAllWishlistController = async (req, res, next) => {
     try {
-        const data = await getAllWishlistService()
+        const data = await getAllWishlistService(req.pagination)
         if (!data) {
             return res.status(404).send('NOT FOUND!!!')
         }

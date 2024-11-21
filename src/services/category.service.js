@@ -14,9 +14,10 @@ export const createCategoryService = async ({ categoryData }) => {
     }
 }
 
-export const getAllCategoriesService = async () => {
+export const getAllCategoriesService = async (pagination) => {
     try {
-        const categories = await connectDB.select('*').from('categories')
+        const {limit, skip} = pagination
+        const categories = await connectDB.select('*').from('categories').offset(skip).limit(limit)
         return { success: true, categories }
     } catch (error) {
         return { success: false, error }

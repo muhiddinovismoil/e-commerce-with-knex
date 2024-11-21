@@ -26,7 +26,7 @@ export const createReviewsController = async (req, res, next) => {
 
 export const getAllReviewsController = async (req, res, next) => {
     try {
-        const data = await getAllReviewsService()
+        const data = await getAllReviewsService(req.pagination)
         if (!data) {
             return res.status(404).send('NOT FOUND!!!')
         }

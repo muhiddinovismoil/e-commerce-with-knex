@@ -23,9 +23,10 @@ export const createCartItemService = async ({ cartItemData }) => {
     }
 }
 
-export const getAllCartItemsService = async () => {
+export const getAllCartItemsService = async (pagination) => {
     try {
-        const cartItems = await connectDB.select('*').from('cart_item')
+        const {limit, skip} = pagination
+        const cartItems = await connectDB.select('*').from('cart_item').offset(skip).limit(limit)
         return { success: true, cartItems }
     } catch (error) {
         return { success: false, error }

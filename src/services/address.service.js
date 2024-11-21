@@ -1,8 +1,9 @@
 import connectDB from '../database/db.js'
 import { logger } from '../utils/index.js'
-export const getAllAddressesService = async () => {
+export const getAllAddressesService = async (pagination) => {
     try {
-        const data = await connectDB.select('*').from('addresses')
+        const {limit, skip} = pagination
+        const data = await connectDB.select('*').from('addresses').offset(skip).limit(limit)
         if (data.length == 0) {
             throw new Error('Address not found')
         }
