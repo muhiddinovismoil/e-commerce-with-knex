@@ -10,6 +10,9 @@ import {
     ordersRouter,
     addressRouter,
     socialProfilesRouter,
+    wishlistRouter,
+    reviewsRouter,
+    cartRouter,
 } from './routes/index.js'
 const app = express()
 app.use(express.json())
@@ -21,6 +24,9 @@ app.use('/api/v1/address', addressRouter)
 app.use('/api/v1/social-profiles', socialProfilesRouter)
 app.use('/api/v1/orders', ordersRouter)
 app.use('/api/v1/product', productRouter)
+app.use('/api/v1/wishlist', wishlistRouter)
+app.use('/api/v1/reviews', reviewsRouter)
+app.use('/api/v1/carts', cartRouter)
 app.use('/api/v1/category', categoryRouter)
 app.use('/api/v1/cartitem', cardItemRouter)
 app.get('/setup', async (req, res) => {
