@@ -6,7 +6,7 @@ import {
     updateAddressByIdController,
     deleteAddressByIdController,
 } from '../controllers/index.js'
-import { userScheme } from '../validations/index.js'
+import { addressSchema } from '../validations/index.js'
 import { authGuard, roleGuard, validateSchema } from '../middlewares/index.js'
 export const addressRouter = Router()
 addressRouter.get('/', authGuard, getAllAddressesController)
@@ -14,7 +14,7 @@ addressRouter.get('/:id', authGuard, getAddressByIdController)
 addressRouter.post(
     '/',
     authGuard,
-    validateSchema(userScheme),
+    validateSchema(addressSchema),
     createAddressController,
 )
 addressRouter.put(

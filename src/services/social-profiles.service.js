@@ -64,12 +64,14 @@ export const deleteSocialProfileByIdService = async (id) => {
     try {
         const data = await connectDB('social_profiles')
             .where('id', id)
+            .del()
             .returning('*')
         if (!data[0]) {
             throw new Error(
                 'Social Profiles not found or maybe not deleted with some reason',
             )
         }
+        return data
     } catch (error) {
         logger.error(error.message)
         return error.message
