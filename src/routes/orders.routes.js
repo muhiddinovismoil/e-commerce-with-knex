@@ -10,14 +10,14 @@ import {
 } from '../controllers/index.js'
 import { ordersSchema } from '../validations/order.schema.js'
 
-export const wishlistRouter = Router()
+export const ordersRouter = Router()
 
-wishlistRouter.get('/all', authGuard, getAllOrdersController)
-wishlistRouter.get('/all/:id', authGuard, getByIdOrdersController)
-wishlistRouter.post(
+ordersRouter.get('/all', authGuard, getAllOrdersController)
+ordersRouter.get('/all/:id', authGuard, getByIdOrdersController)
+ordersRouter.post(
     '/create',
     authGuard,
     validateSchema(ordersSchema),
     createOrdersController,
 )
-wishlistRouter.get('/delete/:id', authGuard, deleteOrdersController)
+ordersRouter.get('/delete/:id', authGuard, deleteOrdersController)
